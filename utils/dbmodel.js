@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
 module.exports = {
-	// define models
+	Entity: mongoose.model('Entity', {
+		
+	})
 };

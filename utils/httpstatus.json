@@ -37,12 +37,12 @@
 	"204": {
 		"code": 204,
 		"description": "No Content",
-		"message": "The server has accepted the request, but no content exists."
+		"message": "The server has accepted the request, and no content exists."
 	},
 	"205": {
 		"code": 205,
 		"description": "Reset Content",
-		"message": "The server has accepted the request, but no content exists."
+		"message": "The server has accepted the request, and no content exists."
 	},
 	"206": {
 		"code": 206,

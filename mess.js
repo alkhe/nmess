@@ -6,6 +6,7 @@ module.exports = function(port) {
         io = require('socket.io')(http),
         path = require('path'),
         stylus = require('stylus'),
+        bodyParser = require('body-parser'),
         compression = require('compression'),
         session = require('express-session'),
         logger = require('morgan')('dev'),
@@ -13,7 +14,8 @@ module.exports = function(port) {
         models = require('./utils/dbmodel'),
         httpstatus = require('./utils/httpstatus');
 
-    var index = require('./routes/index')(io);
+    var index = require('./routes/index')(io),
+        api = require('./routes/api');
 
     app.set('port', port)
     .set('views', path.join(__dirname, 'views'))
@@ -25,11 +27,16 @@ module.exports = function(port) {
         resave: true,
         saveUninitialized: true
     }))
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({
+        extended: false
+    }))
     .use(stylus.middleware('./public'))
     .use(express.static('./public'))
     .use(compression());
 
-    app.use('/', index);
+    app.use('/', index)
+    .use('/api', api);
 
     app.use(function(req, res) {
         res.render('error', {
