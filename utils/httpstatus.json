@@ -142,11 +142,36 @@
 	"406": {
 		"code": 406,
 		"description": "Not Acceptable",
-		"message": "The request was successful."
+		"message": "The resource could not be represented in the requested format."
 	},
 	"407": {
 		"code": 407,
 		"description": "Proxy Authentication Required",
-		"message": "The request was successful."
+		"message": "An authentication by proxy is required to access this resource."
+	},
+	"408": {
+		"code": 408,
+		"description": "Request Timeout",
+		"message": "The client response timed out."
+	},
+	"409": {
+		"code": 409,
+		"description": "Conflict",
+		"message": "The request contained conflicting information."
+	},
+	"410": {
+		"code": 410,
+		"description": "Gone",
+		"message": "The requested resource will no longer be available."
+	},
+	"411": {
+		"code": 411,
+		"description": "Length Required",
+		"message": "The request did not specify content length."
+	},
+	"412": {
+		"code": 412,
+		"description": "Precondition Failed",
+		"message": "The server did not meet one of the preconditions that was requested."
 	}
 }
