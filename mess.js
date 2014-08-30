@@ -9,7 +9,7 @@ module.exports = function(port) {
         compression = require('compression'),
         session = require('express-session'),
         logger = require('morgan')('dev'),
-        httpcodes = require('./utils/httpcodes');
+        httpstatus = require('./utils/httpstatus');
 
     var index = require('./routes/index')(io);
 
@@ -31,7 +31,7 @@ module.exports = function(port) {
 
     app.use(function(req, res) {
         res.render('error', {
-            err: httpcodes[404]
+            err: httpstatus[404]
         });
     });
 

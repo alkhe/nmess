@@ -1,7 +1,0 @@
-{
-	"404": {
-		"code": 404,
-		"description": "Not Found",
-		"message": "The requested resource could not be found."
-	}
-}
