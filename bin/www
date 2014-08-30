@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var debug = require('debug')('mess'),
-	port = process.env.PORT || 80,
-	http = require('../mess')(port);
-
-var server = http.listen(port, function() {
-  debug('initialized on port ' + port);
-});
+var	port = process.env.PORT || 80,
+	http = require('../mess')(port),
+	dbdriver = require('../utils/dbdriver')('mess', function() {
+		http.listen(port, function() {
+			
+		});
+	});

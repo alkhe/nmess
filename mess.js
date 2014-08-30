@@ -9,6 +9,8 @@ module.exports = function(port) {
         compression = require('compression'),
         session = require('express-session'),
         logger = require('morgan')('dev'),
+        mongoose = require('mongoose'),
+        models = require('./utils/dbmodel'),
         httpstatus = require('./utils/httpstatus');
 
     var index = require('./routes/index')(io);
@@ -19,7 +21,7 @@ module.exports = function(port) {
 
     app.use(logger)
     .use(session({
-        secret: "{{secret}}",
+        secret: "<|MESS_SECRET|>",
         resave: true,
         saveUninitialized: true
     }))
