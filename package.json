@@ -1,30 +1,11 @@
 {
   "name": "nmess",
-  "version": "0.1.0",
-  "description": "An intuitive and elegant boilerplate for the Node.js MESS webstack.",
+  "version": "0.0.1",
+  "description": "nmess",
   "main": "bin/www",
   "scripts": {
     "start": "./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chronize/node-mess"
-  },
-  "keywords": [
-    "mess",
-    "mongo",
-    "express",
-    "socket.io",
-    "stylus",
-    "jade",
-    "web"
-  ],
-  "author": "synchronous",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chronize/node-mess/issues"
-  },
-  "homepage": "https://github.com/chronize/node-mess",
   "dependencies": {
     "body-parser": "^1.6.7",
     "compression": "^1.0.11",
