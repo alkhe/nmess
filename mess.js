@@ -1,4 +1,4 @@
-module.exports = function(port) {
+module.exports = function(port, secret) {
 
     var express = require('express'),
         app = express(),
@@ -23,7 +23,7 @@ module.exports = function(port) {
 
     app.use(logger)
     .use(session({
-        secret: "mess-secret-replace-token",
+        secret: secret,
         resave: true,
         saveUninitialized: true
     }))
