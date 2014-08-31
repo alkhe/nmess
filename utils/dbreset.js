@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/<|MESS_NAME|>');
+mongoose.connect('mongodb://localhost/mess-database-replace-token');
 var db = mongoose.connection;
 db.on('error', function(err) {
 	return console.log(err);

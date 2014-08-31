@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 var	port = process.env.PORT || 80,
 	http = require('../mess')(port),
-	dbdriver = require('../utils/dbdriver')('mess', function() {
+	dbdriver = require('../utils/dbdriver')('mess-database-replace-token', function() {
 		http.listen(port, function() {
-			
+
 		});
 	});

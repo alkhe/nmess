@@ -23,7 +23,7 @@ module.exports = function(port) {
 
     app.use(logger)
     .use(session({
-        secret: "<|MESS_SECRET|>",
+        secret: "mess-secret-replace-token",
         resave: true,
         saveUninitialized: true
     }))
