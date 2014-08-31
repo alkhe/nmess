@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var	port = process.env.PORT || 80,
+var	port = process.env.PORT || 3000,
 	http = require('../mess')(port, '{{session-secret}}'),
 	dbdriver = require('../utils/dbdriver')('{{localdb}}', function() {
 		http.listen(port, function() {
