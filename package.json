@@ -1,7 +1,7 @@
 {
-  "name": "nmess",
+  "name": "{{application-name}}",
   "version": "0.0.1",
-  "description": "nmess",
+  "description": "{{application-name}}",
   "main": "bin/www",
   "scripts": {
     "start": "./bin/www"
