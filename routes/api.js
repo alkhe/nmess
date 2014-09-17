@@ -7,21 +7,21 @@ var express = require('express'),
 			next();
 		},
 		get: function(req, res) {
-			control.getEntity({
+			control.get({
 
 			}, function(err, ents) {
 				res.status(200).send(ents);
 			});
 		},
 		post: function(req, res) {
-			control.createEntity({
+			control.create({
 
 			}, function(err, ents) {
 				res.status(200).send(ents);
 			});
 		},
 		put: function(req, res) {
-			control.updateEntity({
+			control.update({
 
 			}, {
 
@@ -32,7 +32,7 @@ var express = require('express'),
 			});
 		},
 		delete: function(req, res) {
-			control.removeEntity({
+			control.remove({
 
 			}, function(err, ents) {
 				res.status(204).send(ents);

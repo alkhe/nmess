@@ -1,0 +1,6 @@
+{
+	"application-name": "{{application-name}}",
+	"session-secret": "{{session-secret}}",
+	"localdb": "{{localdb}}",
+	"port": 3000
+}

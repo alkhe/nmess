@@ -10,6 +10,7 @@ module.exports = function(port, secret) {
         compression = require('compression'),
         session = require('express-session'),
         logger = require('morgan')('dev'),
+        favicon = require('serve-favicon'),
         mongoose = require('mongoose'),
         models = require('./utils/dbmodel'),
         httpstatus = require('./utils/httpstatus');
@@ -22,6 +23,7 @@ module.exports = function(port, secret) {
     .set('view engine', 'jade');
 
     app.use(logger)
+    .use(favicon('./public/favicon.ico'))
     .use(session({
         secret: secret,
         resave: true,

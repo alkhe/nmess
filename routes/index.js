@@ -1,6 +1,7 @@
 module.exports = function(io) {
 	var express = require('express'),
-		router = express.Router();
+		router = express.Router(),
+		control = require('../utils/controller');
 
 	router.get('/', function(req, res) {
 		res.render('index', {
@@ -11,6 +12,7 @@ module.exports = function(io) {
 	io.on('connection', function(socket) {
 		socket.on('init', function(data) {
 			socket.on('disconnect', function() {
+				
 			});
 		});
 	});

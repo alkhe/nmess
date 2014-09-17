@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
+var config = require('../config'),
+	mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/{{localdb}}');
+mongoose.connect('mongodb://localhost/' + config.localdb);
 var db = mongoose.connection;
 db.on('error', function(err) {
 	return console.log(err);
