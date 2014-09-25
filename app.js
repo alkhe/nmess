@@ -5,11 +5,13 @@ module.exports = function(port, secret) {
         http = require('http').createServer(app),
         io = require('socket.io')(http),
         path = require('path'),
-        stylus = require('stylus'),
-        bodyParser = require('body-parser'),
-        compression = require('compression'),
-        session = require('express-session'),
+
         logger = require('morgan')('dev'),
+        session = require('express-session'),
+        bodyParser = require('body-parser'),
+        stylus = require('stylus'),
+        compression = require('compression'),
+
         mongoose = require('mongoose'),
         models = require('./utils/dbmodel'),
         httpstatus = require('./utils/httpstatus');
@@ -25,9 +27,7 @@ module.exports = function(port, secret) {
     app
         .use(logger)
         .use(session({
-            secret: secret,
-            resave: true,
-            saveUninitialized: true
+            secret: secret
         }))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({
@@ -35,6 +35,8 @@ module.exports = function(port, secret) {
         }))
         .use(stylus.middleware('./public'))
         .use(compression())
+
+
         .use(express.static('./public'))
 
 
