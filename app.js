@@ -27,7 +27,9 @@ module.exports = function(port, secret) {
     app
         .use(logger)
         .use(session({
-            secret: secret
+            secret: secret,
+            resave: true,
+            saveUninitialized: true
         }))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({
