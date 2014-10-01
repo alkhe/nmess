@@ -1,9 +1,10 @@
+var express = require('express'),
+    control = require('../utils/controller'),
+    router = express.Router();
+
 module.exports = function(io) {
 
-    var express = require('express'),
-        router = express.Router(),
-        control = require('../utils/controller'),
-        api = {
+    var api = {
             all: function(req, res, next) {
                 console.log(req.method, req.params, req.body, req.query);
                 next();
@@ -89,4 +90,5 @@ module.exports = function(io) {
 	    ;
 
     return router;
-}
+
+};

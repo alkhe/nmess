@@ -1,20 +1,21 @@
+var express = require('express'),
+    app = express(),
+    path = require('path'),
+
+    logger = require('morgan')('dev'),
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    stylus = require('stylus'),
+    compression = require('compression'),
+
+    mongoose = require('mongoose'),
+    models = require('./utils/dbmodel'),
+    httpstatus = require('./utils/httpstatus');
+
 module.exports = function(port, secret) {
 
-    var express = require('express'),
-        app = express(),
-        http = require('http').createServer(app),
-        io = require('socket.io')(http),
-        path = require('path'),
-
-        logger = require('morgan')('dev'),
-        session = require('express-session'),
-        bodyParser = require('body-parser'),
-        stylus = require('stylus'),
-        compression = require('compression'),
-
-        mongoose = require('mongoose'),
-        models = require('./utils/dbmodel'),
-        httpstatus = require('./utils/httpstatus');
+    var http = require('http').createServer(app),
+        io = require('socket.io')(http);
 
     var index = require('./routes/index')(io),
         api = require('./routes/api')(io);
@@ -53,4 +54,5 @@ module.exports = function(port, secret) {
         });
 
     return http;
-}
+
+};
