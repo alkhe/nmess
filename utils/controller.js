@@ -1,4 +1,4 @@
-var db = require('../utils/dbmodel');
+var db = require('../utils/model');
 
 module.exports = {
 	get: function(condition, callback) {

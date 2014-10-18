@@ -9,7 +9,7 @@ var express = require('express'),
     compression = require('compression'),
 
     mongoose = require('mongoose'),
-    models = require('./utils/dbmodel'),
+    models = require('./utils/model'),
     httpstatus = require('./utils/httpstatus');
 
 module.exports = function(port, secret) {
