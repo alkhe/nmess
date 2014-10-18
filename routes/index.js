@@ -1,6 +1,5 @@
-var express = require('express'),
-	router = express.Router(),
-	control = require('../utils/controller');
+var router = require('express').Router(),
+	control = require('../db/control');
 
 module.exports = function(io) {
 
@@ -14,7 +13,7 @@ module.exports = function(io) {
 		socket.on('init', function(data) {
 			socket
 				.emit('response', {
-					
+
 				})
 				.on('disconnect', function() {
 
@@ -24,4 +23,4 @@ module.exports = function(io) {
 
 	return router;
 
-};
+}

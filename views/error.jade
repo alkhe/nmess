@@ -6,7 +6,7 @@ block head
 block content
 	h1 #{err.code} #{err.description}
 
-	.err-msg= err.message
+	div= err.message
 
 	if err.extra
-		.err-extra= err.extra
+		div= err.extra

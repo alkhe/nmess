@@ -1,1 +1,1 @@
-#{{application-name}}
+#__name__

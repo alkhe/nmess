@@ -1,6 +1,6 @@
 {
-	"application-name": "{{application-name}}",
-	"session-secret": "{{session-secret}}",
-	"localdb": "{{localdb}}",
+	"name": "__name__",
+	"secret": "__secret__",
+	"db": "__db__",
 	"port": 3000
 }

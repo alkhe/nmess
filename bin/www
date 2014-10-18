@@ -2,9 +2,9 @@
 
 var config = require('../config'),
 	port = process.env.PORT || config.port || 3000,
-	http = require('../app')(port, config["session-secret"]),
-	db = require('../utils/db')(config.localdb, function() {
-		http.listen(port, function() {
+	server = require('../app').server,
+	db = require('../db/init')(config.db, function() {
+		server.listen(port, function() {
 
 		});
 	});

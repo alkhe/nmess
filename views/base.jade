@@ -1,13 +1,13 @@
 doctype html
 html
 	head
-		title {{application-name}}
-		link(rel="icon", href='/favicon.ico')/
-		link(rel='stylesheet', href='/css/{{application-name}}.css')/
-		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic')/
-		script(src='/js/jquery.min.js')/
-		script(src='/js/socket.io.min.js')/
-		script(src='/js/jade.min.js')/
+		title __name__
+		link(rel='icon', href='/favicon.ico')
+		link(rel='stylesheet', href='/css/__name__.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans')
+		script(src='/js/jquery.min.js')
+		script(src='/js/socket.io.min.js')
+		script(src='/js/jade.min.js')
 		block head
 	body
 		block content

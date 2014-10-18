@@ -1,58 +1,47 @@
-var express = require('express'),
-    app = express(),
-    path = require('path'),
+var config = require('./config'),
+	express = require('express'),
+	app = express(),
+	http = require('http').createServer(app),
+	io = require('socket.io')(http),
 
-    logger = require('morgan')('dev'),
-    session = require('express-session'),
+	logger = require('morgan')('dev'),
+	session = require('express-session'),
     bodyParser = require('body-parser'),
     stylus = require('stylus'),
     compression = require('compression'),
+	httpres = require('./util/httpres');
 
-    mongoose = require('mongoose'),
-    models = require('./utils/model'),
-    httpstatus = require('./utils/httpstatus');
+app
+    .set('views', './views')
+    .set('view engine', 'jade')
+	.set('view cache', true);
 
-module.exports = function(port, secret) {
-
-    var http = require('http').createServer(app),
-        io = require('socket.io')(http);
-
-    var index = require('./routes/index')(io),
-        api = require('./routes/api')(io);
-
-    app
-        .set('port', port)
-        .set('views', path.join(__dirname, 'views'))
-        .set('view engine', 'jade');
-
-    app
-        .use(logger)
-        .use(session({
-            secret: secret,
-            resave: true,
-            saveUninitialized: true
-        }))
-        .use(bodyParser.json())
-        .use(bodyParser.urlencoded({
-            extended: false
-        }))
-        .use(stylus.middleware('./public'))
-        .use(compression())
+app
+	.use(logger)
+    .use(session({
+        secret: config.secret,
+        resave: true,
+        saveUninitialized: true
+    }))
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({
+        extended: false
+    }))
+    .use(stylus.middleware('./public'))
+    .use(compression())
+    .use(express.static('./public'))
 
 
-        .use(express.static('./public'))
+	.use('/', require('./routes/index')(io))
+	.use('/api', require('./routes/api')(io))
 
-
-        .use('/', index)
-        .use('/api', api)
-
-
-        .use(function(req, res) {
-            res.render('error', {
-                err: httpstatus[404]
-            });
+	.use(function(req, res) {
+        res.render('error', {
+            err: httpres[404]
         });
+    });
 
-    return http;
-
+module.exports = {
+	app: app,
+	server: http
 };

@@ -1,3 +1,4 @@
 {
+	"ext": "jade,js",
 	"ignore": ["public/tpl/"]
 }
