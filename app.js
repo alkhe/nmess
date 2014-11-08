@@ -8,6 +8,7 @@ var config = require('./config'),
 	session = require('express-session'),
     bodyParser = require('body-parser'),
     stylus = require('stylus'),
+	templatizer = require('templatizer'),
     compression = require('compression'),
 	httpres = require('./util/httpres');
 
@@ -16,24 +17,29 @@ app
     .set('view engine', 'jade')
 	.set('view cache', true);
 
+
 app
-	.use(logger)
-    .use(session({
-        secret: config.secret,
-        resave: true,
-        saveUninitialized: true
-    }))
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({
-        extended: false
-    }))
-    .use(stylus.middleware('./public'))
-    .use(compression())
-    .use(express.static('./public'))
+	.use([
+		logger,
+		session({
+		    secret: config.secret,
+		    resave: true,
+		    saveUninitialized: true
+		}),
+		bodyParser.json(),
+		bodyParser.urlencoded({
+			extended: false
+		}),
+		function(req, res, next) {
+			process.nextTick(next);
+			templatizer('./public/tpl', './public/js/templates.js');
+		},
+		stylus.middleware('./public'),
+		compression(),
+		express.static('./public')
+	])
 
-
-	.use('/', require('./routes/index')(io))
-	.use('/api', require('./routes/api')(io))
+	.use('/', require('./router.js')(io))
 
 	.use(function(req, res) {
         res.render('error', {
