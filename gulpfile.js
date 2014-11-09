@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 	templatizer = require('templatizer'),
 
 	tplSrc = './client/tpl/',
-	tplMatch = tplSrc + '*.jade',
+	tplMatch = tplSrc + '**/*.jade',
 	tplDest = './public/js/',
 	tplFile = tplDest + 'templates.js',
 
@@ -48,7 +48,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('tplw', function() {
-	gulp.watch(tplMatch, ['js']);
+	gulp.watch(tplMatch, ['tpl']);
 });
 
 gulp.task('cssw', function() {
