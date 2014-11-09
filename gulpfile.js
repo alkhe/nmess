@@ -55,7 +55,8 @@ gulp.task('tplw', function() {
 });
 
 gulp.task('cssw', function() {
-	watch(cssMatch, function(files) {
-		return files.pipe(compose.css());
+	watch(cssMatch, function(files, next) {
+		files.pipe(compose.css());
+		next();
 	});
 });
