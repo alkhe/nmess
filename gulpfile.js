@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 	tplFile = tplDest + 'templates.js',
 
 	cssSrc = './client/css/',
-	cssMatch = cssSrc + '*.styl',
+	cssMatch = cssSrc + '**/*.styl',
 	cssDest = './public/css/',
 
 	compose = {
@@ -48,16 +48,14 @@ gulp.task('css', function() {
 });
 
 gulp.task('tplw', function() {
-	gulp.src(tplMatch)
-		.pipe(watch(tplMatch, function(files) {
-			gulp.start('tpl');
-		}));
-	// gulp.watch(tplMatch, ['tpl']);
+	watch(tplMatch, function(files, next) {
+		gulp.start('tpl');
+		next();
+	});
 });
 
 gulp.task('cssw', function() {
-	gulp.src(cssMatch)
-		.pipe(watch(cssMatch, function(files) {
-			return files.pipe(compose.css());
-		}));
+	watch(cssMatch, function(files) {
+		return files.pipe(compose.css());
+	});
 });
