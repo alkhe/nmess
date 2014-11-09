@@ -48,7 +48,11 @@ gulp.task('css', function() {
 });
 
 gulp.task('tplw', function() {
-	gulp.watch(tplMatch, ['tpl']);
+	gulp.src(tplMatch)
+		.pipe(watch(tplMatch, function(files) {
+			gulp.start('tpl');
+		}));
+	// gulp.watch(tplMatch, ['tpl']);
 });
 
 gulp.task('cssw', function() {
