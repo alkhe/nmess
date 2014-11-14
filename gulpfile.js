@@ -11,6 +11,10 @@ var gulp = require('gulp'),
 	tplDest = './public/js/',
 	tplFile = tplDest + 'templates.js',
 
+	jsSrc = './client/js/',
+	jsMatch = jsSrc + '**/*.js',
+	jsDest = './public/js/',
+
 	cssSrc = './client/css/',
 	cssMatch = cssSrc + '**/*.styl',
 	cssDest = './public/css/',
@@ -19,6 +23,9 @@ var gulp = require('gulp'),
 		tpl: lazy()
 			.pipe(uglify)
 			.pipe(gulp.dest, tplDest),
+		js: lazy()
+			.pipe(uglify)
+			.pipe(gulp.dest, jsDest),
 		css: lazy()
 			.pipe(stylus, {
 				compress: true
@@ -30,17 +37,21 @@ gulp.task('default', ['compile', 'watch'], function() {
 
 });
 
-gulp.task('compile', ['tpl', 'css'], function() {
+gulp.task('compile', ['tpl', 'js', 'css'], function() {
 
 });
 
-gulp.task('watch', ['tplw', 'cssw'], function() {
+gulp.task('watch', ['tplw', 'jsw', 'cssw'], function() {
 
 });
 
 gulp.task('tpl', function() {
 	templatizer(tplSrc, tplFile);
 	gulp.src(tplFile).pipe(compose.tpl());
+});
+
+gulp.task('js', function() {
+	gulp.src(jsMatch).pipe(compose.js());
 });
 
 gulp.task('css', function() {
@@ -50,6 +61,13 @@ gulp.task('css', function() {
 gulp.task('tplw', function() {
 	watch(tplMatch, function(files, next) {
 		gulp.start('tpl');
+		next();
+	});
+});
+
+gulp.task('jsw', function() {
+	watch(jsMatch, function(files, next) {
+		files.pipe(compose.js());
 		next();
 	});
 });
