@@ -37,11 +37,11 @@ gulp.task('default', ['compile', 'watch'], function() {
 
 });
 
-gulp.task('compile', ['tpl', 'js', 'css'], function() {
+gulp.task('compile', ['js', 'tpl', 'css'], function() {
 
 });
 
-gulp.task('watch', ['tplw', 'jsw', 'cssw'], function() {
+gulp.task('watch', ['jsw', 'tplw', 'cssw'], function() {
 
 });
 
