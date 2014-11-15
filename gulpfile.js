@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
 	watch = require('gulp-watch'),
 	stylus = require('gulp-stylus'),
-	uglify = require('gulp-uglifyjs'),
+	uglify = require('gulp-uglify'),
 	lazy = require('lazypipe'),
 
 	templatizer = require('templatizer'),
@@ -37,17 +37,12 @@ gulp.task('default', ['compile', 'watch'], function() {
 
 });
 
-gulp.task('compile', ['js', 'tpl', 'css'], function() {
+gulp.task('compile', ['js', 'css', 'tpl'], function() {
 
 });
 
-gulp.task('watch', ['jsw', 'tplw', 'cssw'], function() {
+gulp.task('watch', ['jsw', 'cssw', 'tplw'], function() {
 
-});
-
-gulp.task('tpl', function() {
-	templatizer(tplSrc, tplFile);
-	gulp.src(tplFile).pipe(compose.tpl());
 });
 
 gulp.task('js', function() {
@@ -58,11 +53,9 @@ gulp.task('css', function() {
 	gulp.src(cssMatch).pipe(compose.css());
 });
 
-gulp.task('tplw', function() {
-	watch(tplMatch, function(files, next) {
-		gulp.start('tpl');
-		next();
-	});
+gulp.task('tpl', function() {
+	templatizer(tplSrc, tplFile);
+	gulp.src(tplFile).pipe(compose.tpl());
 });
 
 gulp.task('jsw', function() {
@@ -75,6 +68,13 @@ gulp.task('jsw', function() {
 gulp.task('cssw', function() {
 	watch(cssMatch, function(files, next) {
 		files.pipe(compose.css());
+		next();
+	});
+});
+
+gulp.task('tplw', function() {
+	watch(tplMatch, function(files, next) {
+		gulp.start('tpl');
 		next();
 	});
 });
