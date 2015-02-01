@@ -4,13 +4,6 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	lazy = require('lazypipe'),
 
-	templatizer = require('templatizer'),
-
-	tplSrc = './client/tpl/',
-	tplMatch = tplSrc + '**/*.jade',
-	tplDest = './public/js/',
-	tplFile = tplDest + 'templates.js',
-
 	jsSrc = './client/js/',
 	jsMatch = jsSrc + '**/*.js',
 	jsDest = './public/js/',
@@ -20,9 +13,6 @@ var gulp = require('gulp'),
 	cssDest = './public/css/',
 
 	compose = {
-		tpl: lazy()
-			.pipe(uglify)
-			.pipe(gulp.dest, tplDest),
 		js: lazy()
 			.pipe(uglify)
 			.pipe(gulp.dest, jsDest),
@@ -37,11 +27,11 @@ gulp.task('default', ['compile', 'watch'], function() {
 
 });
 
-gulp.task('compile', ['js', 'css', 'tpl'], function() {
+gulp.task('compile', ['js', 'css'], function() {
 
 });
 
-gulp.task('watch', ['jsw', 'cssw', 'tplw'], function() {
+gulp.task('watch', ['jsw', 'cssw'], function() {
 
 });
 
@@ -51,11 +41,6 @@ gulp.task('js', function() {
 
 gulp.task('css', function() {
 	gulp.src(cssMatch).pipe(compose.css());
-});
-
-gulp.task('tpl', function() {
-	templatizer(tplSrc, tplFile);
-	gulp.src(tplFile).pipe(compose.tpl());
 });
 
 gulp.task('jsw', function() {
@@ -68,13 +53,6 @@ gulp.task('jsw', function() {
 gulp.task('cssw', function() {
 	watch(cssMatch, function(files, next) {
 		files.pipe(compose.css());
-		next();
-	});
-});
-
-gulp.task('tplw', function() {
-	watch(tplMatch, function(files, next) {
-		gulp.start('tpl');
 		next();
 	});
 });
