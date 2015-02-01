@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	var socket = io.connect(),
-		T = templatizer;
+	var socket = io.connect();
 
 	socket
 		.emit('init', {
