@@ -10,13 +10,25 @@ transition()
 	-o-transition arguments
 	transition arguments
 
+user-select()
+	-webkit-touch-callout arguments
+	-webkit-user-select arguments
+	-khtml-user-select arguments
+	-moz-user-select arguments
+	-ms-user-select arguments
+	user-select arguments
+
 html, body
 	margin 0 auto
 	padding 0
 
 *
-	outline none
+	outline none !important
 	font-family 'Open Sans', Helvetica, sans-serif
 
 a
 	text-decoration none
+
+#wrapper
+	width 80%
+	margin 0 auto

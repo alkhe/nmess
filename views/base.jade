@@ -1,5 +1,5 @@
 doctype html
-html(ng-app)
+html(ng-app='__name__App')
 	head
 		title __name__
 		link(rel='icon', href='/favicon.ico')
@@ -9,6 +9,9 @@ html(ng-app)
 		script(src='/js/socket.io.js')
 		script(src='/js/bootstrap.js')
 		script(src='/js/angular.js')
+		script(src='/js/angular-route.js')
+		script(src='/js/angular-animate.js')
+		script(src='/js/__name__App.js')
 		block head
-	body
+	body(ng-controller='MainCtrl')
 		block content
