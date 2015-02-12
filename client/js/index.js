@@ -1,11 +1,12 @@
-$(document).ready(function() {
-	var socket = io.connect();
+$(document).ready(() => {
+	let socket = io.connect();
+
 
 	socket
 		.emit('init', {
 
 		})
-		.on('response', function(data) {
+		.on('response', (data) => {
 
 		});
 });
