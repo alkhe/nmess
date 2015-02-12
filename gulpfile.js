@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),
 	stylus = require('gulp-stylus'),
 	uglify = require('gulp-uglify'),
+	to5 = require('gulp-6to5'),
 	lazy = require('lazypipe'),
 
 	jsSrc = './client/js/',
@@ -15,6 +16,7 @@ var gulp = require('gulp'),
 	compose = {
 		js: lazy()
 			.pipe(uglify)
+			.pipe(to5)
 			.pipe(gulp.dest, jsDest),
 		css: lazy()
 			.pipe(stylus, {
