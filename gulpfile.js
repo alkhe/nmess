@@ -25,7 +25,7 @@ gulp.task('watch', ['jsw', 'cssw'], function() {
 });
 
 gulp.task('js', function() {
-	return gulp.src(jsMatch)
+	gulp.src(jsMatch)
 		.pipe(cached('js'))
 		.pipe(to5())
 		.pipe(uglify())
@@ -33,7 +33,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-	return gulp.src(cssMatch)
+	gulp.src(cssMatch)
 		.pipe(cached('js'))
 		.pipe(stylus({
 			compress: true
