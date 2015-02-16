@@ -2,7 +2,7 @@ var gulp = require('gulp'),
 	cached = require('gulp-cached'),
 	stylus = require('gulp-stylus'),
 	uglify = require('gulp-uglify'),
-	to5 = require('gulp-6to5'),
+	babel = require('gulp-babel'),
 
 	jsDir = './client/js/',
 	jsMatch = jsDir + '**/*.js',
@@ -27,7 +27,7 @@ gulp.task('watch', ['jsw', 'cssw'], function() {
 gulp.task('js', function() {
 	gulp.src(jsMatch)
 		.pipe(cached('js'))
-		.pipe(to5())
+		.pipe(babel())
 		.pipe(uglify())
 		.pipe(gulp.dest(jsDest));
 });

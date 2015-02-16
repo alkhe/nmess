@@ -1,7 +1,6 @@
 $(document).ready(() => {
 	let socket = io.connect();
 
-
 	socket
 		.emit('init', {
 
