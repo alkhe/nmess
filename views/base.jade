@@ -2,9 +2,10 @@ doctype html
 html(ng-app='__name__App')
 	head
 		title __name__
-		link(rel='icon', href='/img/favicon.ico')
-		link(rel='stylesheet', href='/css/__name__.css')
-		link(rel='stylesheet', href='/css/bootstrap.css')
+		link(rel='icon' href='/img/favicon.ico')
+		link(rel='stylesheet' href='/css/__name__.css')
+		link(rel='stylesheet' href='/css/bootstrap.css')
+		block css
 		script(src='/js/jquery.js')
 		script(src='/js/socket.io.js')
 		script(src='/js/bootstrap.js')
@@ -12,6 +13,6 @@ html(ng-app='__name__App')
 		script(src='/js/angular-route.js')
 		script(src='/js/angular-animate.js')
 		script(src='/js/__name__App.js')
-		block head
+		block js
 	body(ng-controller='MainCtrl')
 		block content
