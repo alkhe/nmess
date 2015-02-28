@@ -4,13 +4,11 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	babel = require('gulp-babel'),
 
-	jsDir = './client/js/',
-	jsMatch = jsDir + '**/*.js',
-	jsDest = './public/js/',
+	jsmatch = './client/js/**/*.js',
+	jsdest = './public/js/',
 
-	cssDir = './client/css/',
-	cssMatch = cssDir + '**/*.styl',
-	cssDest = './public/css/';
+	cssmatch = './client/css/**/*.styl',
+	cssdest = './public/css/';
 
 gulp.task('default', ['compile', 'watch'], function() {
 
@@ -25,26 +23,26 @@ gulp.task('watch', ['jsw', 'cssw'], function() {
 });
 
 gulp.task('js', function() {
-	gulp.src(jsMatch)
+	gulp.src(jsmatch)
 		.pipe(cached('js'))
 		.pipe(babel())
 		.pipe(uglify())
-		.pipe(gulp.dest(jsDest));
+		.pipe(gulp.dest(jsdest));
 });
 
 gulp.task('css', function() {
-	gulp.src(cssMatch)
+	gulp.src(cssmatch)
 		.pipe(cached('js'))
 		.pipe(stylus({
 			compress: true
 		}))
-		.pipe(gulp.dest(cssDest));
+		.pipe(gulp.dest(cssdest));
 });
 
 gulp.task('jsw', function() {
-	gulp.watch(jsMatch, ['js']);
+	gulp.watch(jsmatch, ['js']);
 });
 
 gulp.task('cssw', function() {
-	gulp.watch(cssMatch, ['css']);
+	gulp.watch(cssmatch, ['css']);
 });
